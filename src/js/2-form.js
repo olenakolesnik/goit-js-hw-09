@@ -2,7 +2,6 @@
 
 const STORAGE_KEY = 'feedback-form-state';
 
-// 1️⃣ Об’єкт formData
 const formData = {
   email: '',
   message: '',
@@ -10,7 +9,6 @@ const formData = {
 
 const form = document.querySelector('.feedback-form');
 
-// 2️⃣ Перевірка localStorage при завантаженні сторінки
 const savedData = localStorage.getItem(STORAGE_KEY);
 
 if (savedData) {
@@ -23,7 +21,7 @@ if (savedData) {
   form.elements.message.value = formData.message;
 }
 
-// 3️⃣ Делегування: подія input
+
 form.addEventListener('input', event => {
   const { name, value } = event.target;
 
@@ -34,7 +32,7 @@ form.addEventListener('input', event => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 });
 
-// 4️⃣ Submit форми
+
 form.addEventListener('submit', event => {
   event.preventDefault();
 
@@ -45,7 +43,7 @@ form.addEventListener('submit', event => {
 
   console.log(formData);
 
-  // Очищення
+
   localStorage.removeItem(STORAGE_KEY);
   form.reset();
 
